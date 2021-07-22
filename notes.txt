@@ -1,0 +1,12 @@
+How to parse the cloudwatch event with lambda
+https://aws.amazon.com/premiumsupport/knowledge-center/change-sns-email-for-cloudwatch-events/
+
+Both cloudwatch and SNS are region specific
+
+You cannot unsubscribe to a subscription that is pending confirmation.
+If you use email, email-json, or http/https (without auto-confirmation enabled), until the subscription is confirmed (e.g., outside of Terraform), AWS does not allow Terraform to delete / unsubscribe the subscription.
+If you destroy an unconfirmed subscription, Terraform will remove the subscription from its state but the subscription will still exist in AWS.
+However, if you delete an SNS topic, SNS deletes all the subscriptions associated with the topic. Also, you can import a subscription after confirmation and then have the capability to delete it.
+
+Does not work with aws_sns_topic_subscription but might be worth looking into.
+endpoint_auto_confirms = true
