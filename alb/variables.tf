@@ -145,7 +145,7 @@ variable "topic_name"{
 variable "endpoint" {
   description = "Endpoint to send data to. The contents vary with the protocol." #for email it is an email address
   type        = string
-  default     = "john.powner.jr@gmail.com"
+  default     = <email address>
 }
 
 variable "protocol" {
